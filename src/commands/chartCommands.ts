@@ -1,8 +1,8 @@
-import * as vscode from 'vscode';
+import type * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs/promises';
 import { ChartConfig } from '../types/chart';
-import { ResponseMessage } from '@microsoft/powertools-chat-core';
+import type { ResponseMessage } from '../types/chat';
 
 export class ChartCommands {
     constructor(private workspaceRoot: string) {}
@@ -18,14 +18,14 @@ export class ChartCommands {
 
             return {
                 content: `Successfully created Helm chart at ${chartPath}. The chart includes:\n` +
-                        `- Chart.yaml: Basic chart information\n` +
-                        `- values.yaml: Default configuration values\n` +
-                        `- templates/: Kubernetes resource templates\n\n` +
-                        `Would you like me to explain the generated files or help you customize them?`
+                        '- Chart.yaml: Basic chart information\n' +
+                        '- values.yaml: Default configuration values\n' +
+                        '- templates/: Kubernetes resource templates\n\n' +
+                        'Would you like me to explain the generated files or help you customize them?'
             };
         } catch (error) {
             return {
-                content: `Failed to generate chart: ${error.message}`
+                content: `Failed to generate chart: ${error instanceof Error ? error.message : String(error)}`
             };
         }
     }

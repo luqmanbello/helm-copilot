@@ -29,7 +29,7 @@ export class HelmCopilot {
             const helmVersion = await this.helmCli.validateHelm();
             if (!helmVersion.success) {
                 return {
-                    content: "It seems Helm is not installed or accessible. Please install Helm and try again."
+                    content: 'It seems Helm is not installed or accessible. Please install Helm and try again.'
                 };
             }
 
@@ -66,7 +66,7 @@ What would you like to do?`
 
                 default:
                     return {
-                        content: "I don't know how to handle that request yet."
+                        content: 'I don\'t know how to handle that request yet.'
                     };
             }
         } catch (error) {
@@ -82,7 +82,7 @@ What would you like to do?`
         const lintResult = await this.helmCli.lintChart(parsedCommand.params.chartName || '.');
         if (lintResult.success) {
             return {
-                content: "Chart validation successful! No issues found."
+                content: 'Chart validation successful! No issues found.'
             };
         } else {
             return {
@@ -95,7 +95,7 @@ What would you like to do?`
         const { releaseName, chartName, namespace } = parsedCommand.params;
         if (!releaseName || !chartName) {
             return {
-                content: "Please provide both a release name and chart name for installation."
+                content: 'Please provide both a release name and chart name for installation.'
             };
         }
 
@@ -128,7 +128,7 @@ What would you like to do?`
         const { releaseName, namespace } = parsedCommand.params;
         if (!releaseName) {
             return {
-                content: "Please specify which release you'd like to check."
+                content: 'Please specify which release you\'d like to check.'
             };
         }
 

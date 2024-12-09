@@ -66,3 +66,13 @@ export interface ChartValidationResult {
   /** Array of validation warnings, if any */
   warnings: string[];
 }
+
+export interface ChatMessage {
+  content: string;
+  metadata?: Record<string, unknown>;
+}
+
+export interface ResponseMessage {
+  content: string;
+  metadata?: Record<string, unknown>;
+}
